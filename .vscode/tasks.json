@@ -6,7 +6,7 @@
         {
             "label": "echo",
             "type": "shell",
-            "command": "g++ -c src/main.cpp && g++ -o sdl main.o -lSDL2 && ./sdl"
+            "command": "g++ src/main.cpp -o ./build/sdl -lSDL2 && ./build/sdl"
         }
     ]
 }
