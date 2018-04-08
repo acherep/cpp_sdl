@@ -21,8 +21,12 @@ int main() {
   Swarm swarm;
 
   while (true) {
+    screen.clear();
+
     const Particle* const pParticles = swarm.getParticles();
     int elapsed = SDL_GetTicks();
+
+    swarm.update();
 
     unsigned char red = (unsigned char)((sin(elapsed * 0.0001) + 1) * 128);
     unsigned char green = (unsigned char)((sin(elapsed * 0.0002) + 1) * 128);

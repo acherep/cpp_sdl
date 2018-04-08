@@ -10,7 +10,7 @@ class Screen {
  public:
   static const int SCREEN_WIDTH = 800;
   static const int SCREEN_HEIGHT = 600;
-  static const int SCREEN_COLOR = 0;
+  static const int INITIAL_SCREEN_COLOR = 0;
 
  private:
   SDL_Window *m_window;
@@ -22,6 +22,7 @@ class Screen {
   Screen();
   bool init();
   void update();
+  void clear();
   void setPixel(int x, int y, Uint8 red, Uint8 green, Uint8 blue);
   bool processEvents();
   void close();

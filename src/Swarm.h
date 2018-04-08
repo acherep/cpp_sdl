@@ -6,16 +6,18 @@
 namespace acherep {
 class Swarm {
  public:
-  static const int NPARTICLES = 5000;
+  static const int NPARTICLES = 1000;
 
  private:
   Particle* m_pParticles;
 
  public:
   Swarm();
-  virtual ~Swarm();
+  ~Swarm();
 
   const Particle* getParticles() { return m_pParticles; };
+
+  void update();
 };
 }  // namespace acherep
 

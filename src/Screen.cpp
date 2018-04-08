@@ -6,10 +6,6 @@ Screen::Screen()
     : m_window(NULL), m_renderer(NULL), m_texture(NULL), m_buffer(NULL) {}
 
 bool Screen::init() {
-  const int SCREEN_WIDTH = 800;
-  const int SCREEN_HEIGHT = 600;
-  const int SCREEN_COLOR = 0;
-
   if (SDL_Init(SDL_INIT_VIDEO) < 0) {
     return false;
   }
@@ -43,7 +39,7 @@ bool Screen::init() {
 
   m_buffer = new Uint32[SCREEN_WIDTH * SCREEN_HEIGHT];
 
-  memset(m_buffer, SCREEN_COLOR, SCREEN_WIDTH * SCREEN_HEIGHT * sizeof(Uint32));
+  clear();
 
   return true;
 }
@@ -55,8 +51,13 @@ void Screen::update() {
   SDL_RenderPresent(m_renderer);
 }
 
+void Screen::clear() {
+  memset(m_buffer, INITIAL_SCREEN_COLOR,
+         SCREEN_WIDTH * SCREEN_HEIGHT * sizeof(Uint32));
+}
+
 void Screen::setPixel(int x, int y, Uint8 red, Uint8 green, Uint8 blue) {
-  if (x<0 || x >= SCREEN_WIDTH || y< 0 || y >= SCREEN_HEIGHT) {
+  if (x < 0 || x >= SCREEN_WIDTH || y < 0 || y >= SCREEN_HEIGHT) {
     return;
   }
 
