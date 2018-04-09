@@ -3,15 +3,15 @@
 
 namespace acherep {
 struct Particle {
+  const static double MAX_SPEED = 0.0001;
   double m_x;
   double m_y;
 
-  double xspeed;
-  double yspeed;
+  double m_speed;
+  double m_direction;
 
- public:
   Particle();
-  void update();
+  void update(int timeInterval);
 };
 }  // namespace acherep
 
