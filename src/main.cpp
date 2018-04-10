@@ -21,8 +21,6 @@ int main() {
   Swarm swarm;
 
   while (true) {
-    screen.clear();
-
     const Particle* const pParticles = swarm.getParticles();
     int elapsed = SDL_GetTicks();
 
@@ -41,7 +39,7 @@ int main() {
 
       screen.setPixel(x, y, red, green, blue);
     }
-
+    screen.boxBlur();
     screen.update();
     if (screen.processEvents() == false) {
       break;
