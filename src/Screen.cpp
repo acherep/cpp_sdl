@@ -94,8 +94,8 @@ void Screen::boxBlur() {
   m_buffer = m_blur_buffer;
   m_blur_buffer = pTempBuffer;
 
-  for (int y = 1; y < SCREEN_HEIGHT - 1; y++) {
-    for (int x = 1; x < SCREEN_WIDTH - 1; x++) {
+  for (int y = 0; y < SCREEN_HEIGHT; y++) {
+    for (int x = 0; x < SCREEN_WIDTH; x++) {
       // the idea is to average the color (red, green, blue) of the pixel and
       // pixels around it
       // 0 0 0
@@ -110,15 +110,18 @@ void Screen::boxBlur() {
           int currentX = x + column;
           int currentY = y + row;
 
-          Uint32 color = m_blur_buffer[currentY * SCREEN_WIDTH + currentX];
+          if (currentX >= 0 && currentX < SCREEN_WIDTH && currentY >= 0 &&
+              currentY < SCREEN_HEIGHT) {
+            Uint32 color = m_blur_buffer[currentY * SCREEN_WIDTH + currentX];
 
-          Uint8 red = color >> 24;
-          Uint8 green = color >> 16;
-          Uint8 blue = color >> 8;
+            Uint8 red = color >> 24;
+            Uint8 green = color >> 16;
+            Uint8 blue = color >> 8;
 
-          redTotal += red;
-          greenTotal += green;
-          blueTotal += blue;
+            redTotal += red;
+            greenTotal += green;
+            blueTotal += blue;
+          }
         }
       }
       Uint8 red = redTotal / 9;
