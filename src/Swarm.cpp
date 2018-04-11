@@ -1,10 +1,7 @@
 #include "Swarm.h"
 
 namespace acherep {
-Swarm::Swarm() {
-  m_pParticles = new Particle[NPARTICLES];
-  m_lastTime = 0;
-}
+Swarm::Swarm() : m_lastTime(0) { m_pParticles = new Particle[NPARTICLES]; }
 Swarm::~Swarm() { delete[] m_pParticles; }
 
 void Swarm::update(int elapsed) {

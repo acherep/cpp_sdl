@@ -17,7 +17,6 @@ class Swarm {
   ~Swarm();
 
   const Particle* getParticles() { return m_pParticles; };
-
   void update(int elapsed);
 };
 }  // namespace acherep
